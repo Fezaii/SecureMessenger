@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">SecureMessage</string>
+    <string name="user_txt">Username</string>
+    <string name="pass_txt">Password</string>
+    <string name="passconf_txt">Confirm Password</string>
+    <string name="login">login</string>
+    <string name="register">Register</string>
+    <string name="message_txt">New Message</string>
+    <string name="contact_list">Contacts</string>
+    <string name="add_contact">New  Contact</string>
+    <string name="messages_txt">Messages</string>
+    <string name="title_txt">welcome</string>
+
+    <string name="add_txt">Add</string>
+    <string name="phone_txt">Phone Number</string>
+    <string name="name_txt">Name</string>
+
+    <string name="content_txt">Content</string>
+    <string name="receiver_txt">Receiver</string>
+    <string name="send_txt">Send</string>
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AccountActivity"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/title_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_txt" />
+
+    <Button
+        android:id="@+id/contact_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:onClick="Contacts"
+        android:text="@string/contact_list" />
+
+    <Button
+        android:id="@+id/add_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="AddContact"
+        android:text="@string/add_contact" />
+
+    <Button
+        android:id="@+id/messages_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="Messages"
+        android:text="@string/messages_txt" />
+
+    <Button
+        android:id="@+id/message_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="CreateMessage"
+        android:text="@string/message_txt" />
+
+</LinearLayout>
