@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(context, "Fail to connect! Verify your connection or login and password", Toast.LENGTH_LONG).show();
 
                                 }
                             });

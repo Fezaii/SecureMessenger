@@ -99,9 +99,9 @@ public class SqliteDB extends SQLiteOpenHelper {
     public static List<Message> MessagesList(SQLiteDatabase db,String user){
 
         List<Message> message_list = new ArrayList<>();
-        String[] field = {MessageEntry.MESSAGE_SENDER,MessageEntry.MESSAGE_RECEIVER,MessageEntry.MESSAGE_CONTENT,MessageEntry.MESSAGE_TYPE};
-        Cursor c = db.query(MessageEntry.TABLE_NAME, field, "sender=?", new String[] {user}, MessageEntry.MESSAGE_SENDER, null,MessageEntry.MESSAGE_SENDER);
-
+        //String[] field = {MessageEntry.MESSAGE_SENDER,MessageEntry.MESSAGE_RECEIVER,MessageEntry.MESSAGE_CONTENT,MessageEntry.MESSAGE_TYPE};
+        //Cursor c = db.query(MessageEntry.TABLE_NAME, field, "sender=?", new String[] {user}, MessageEntry.MESSAGE_SENDER, null,MessageEntry.MESSAGE_SENDER);
+        Cursor c = db.rawQuery("SELECT * FROM " + MessageEntry.TABLE_NAME + " WHERE " + MessageEntry.MESSAGE_SENDER + " = '" + user + "' OR " + MessageEntry.MESSAGE_RECEIVER + " = '" + user + "'",null);
         int isender= c.getColumnIndex(MessageEntry.MESSAGE_SENDER);
         int ireceiver = c.getColumnIndex(MessageEntry.MESSAGE_RECEIVER);
         int icontent = c.getColumnIndex(MessageEntry.MESSAGE_CONTENT);

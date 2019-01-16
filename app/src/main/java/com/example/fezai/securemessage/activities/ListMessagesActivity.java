@@ -51,9 +51,9 @@ public class ListMessagesActivity extends AppCompatActivity {
 
         messagesLv.setHasFixedSize(true);
 
-        final List<Message> msgDtoList = new ArrayList<Message>();
+        /*final List<Message> msgDtoList = new ArrayList<Message>();
         Message msgDto1 = new Message("ahmed","nada","nhebek",Message.MSG_TYPE_RECEIVED);
-        msgDtoList.add(msgDto1);
+        msgDtoList.add(msgDto1);*/
 
         adapter = new MessageAdapter(messages);
         messagesLv.setAdapter(adapter);
@@ -77,9 +77,9 @@ public class ListMessagesActivity extends AppCompatActivity {
                 {
                     // Add a new sent message to the list.
                     Message msgDto = new Message("ahmed","nada",msgContent,Message.MSG_TYPE_SENT);
-                    msgDtoList.add(msgDto);
+                    messages.add(msgDto);
 
-                    int newMsgPosition = msgDtoList.size() - 1;
+                    int newMsgPosition = messages.size() - 1;
 
                     // Notify recycler view insert one new data.
                     adapter.notifyItemInserted(newMsgPosition);
