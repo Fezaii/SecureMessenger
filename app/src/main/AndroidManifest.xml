@@ -23,6 +23,7 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
+        <service android:enabled="true" android:name=".services.MessageService" />
         <activity
             android:name=".activities.RegisterActivity">
 

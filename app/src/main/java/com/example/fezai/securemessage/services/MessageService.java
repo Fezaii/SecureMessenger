@@ -33,7 +33,7 @@ public class MessageService extends Service {
     private boolean firstTime;
     private Handler mHandler;
     private Context context = this;
-    private SQLiteDatabase db;
+    private SqliteDB db;
 
     // default interval for syncing data
     public static final long DEFAULT_SYNC_INTERVAL = 30 * 1000;
@@ -57,8 +57,8 @@ public class MessageService extends Service {
         mPreferences = getSharedPreferences("session" ,MODE_PRIVATE);
 
         new SqliteDB(this).deleteDatabase(this);
-
-        db = new SqliteDB(this).getWritableDatabase();
+        db = new SqliteDB(getApplicationContext());
+        //db = new SqliteDB(this).getWritableDatabase();
         // Create the Handler object
         mHandler = new Handler();
         // Execute a runnable task as soon as possible
@@ -109,23 +109,18 @@ public class MessageService extends Service {
                         JSONObject o = arr.getJSONObject(i);
                         if(o.getBoolean("alreadyReturned") && !firstTime)
                             continue;
-                        if(Message.isPing(o.getString("msg")) || Message.isPong(o.getString("msg")))
-                            continue;
-
-                        ContentValues vals = new ContentValues();
-                        //vals.put(MessageEntry.MESSAGE_SENDER, Message.getAuthor(o.getString("msg")));
-                        //vals.put(MessageEntry.MESSAGE_CONTENT, Message.getContent(o.getString("msg")));
-
-                        long rowId = db.insert(MessageEntry.TABLE_NAME, null, vals);
+                        final String receiver = getSharedPreferences("session", MODE_PRIVATE).getString("login", "");
+                        //if(Message.isPing(o.getString("msg")) || Message.isPong(o.getString("msg")))
+                            //continue;
+                        Message msg =new Message(receiver,o.getString("author"),o.getString("msg"),Message.MSG_TYPE_RECEIVED);
+                        db.InsertMessage(msg,db.getWritableDatabase());
 
                     }
 
                     firstTime = false;
-                    Log.d("polli", arr.toString());
                     return Response.error(new VolleyError());
 
                 } catch (Exception e) {
-                    Log.d("polli", e.getMessage());
 
                     return Response.error(new VolleyError());
                 }

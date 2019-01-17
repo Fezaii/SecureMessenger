@@ -63,8 +63,6 @@ public class ListMessagesActivity extends AppCompatActivity {
 
 
 
-
-
         final EditText msgInputText = (EditText)findViewById(R.id.chat_input_msg);
 
         Button msgSendButton = (Button)findViewById(R.id.chat_send_msg);
@@ -95,4 +93,33 @@ public class ListMessagesActivity extends AppCompatActivity {
 
         }
 
+
+
+        public List<String> getallcontacts(List<Message> list){
+            List<String> list01 = new ArrayList<String>();
+            for (Message m : list){
+                if (m.getSender() != null){
+                    list01.add(m.getSender());
+                }
+                if (m.getReceiver() != null){
+                    list01.add(m.getReceiver());
+                }
+            }
+            Set<String> set = new HashSet<>(list01);
+            list01.clear();
+            list01.addAll(set);
+
+            return  list01;
+        }
+
+        public List<String> getcontactMessages(List<Message> msgs,String contact){
+            List<String> list01 = new ArrayList<String>();
+            for (Message m : msgs ){
+                if ((m.getSender().equals(contact)) || (m.getReceiver().equals(contact))){
+                    list01.add(m.getContent());
+                }
+            }
+            return list01;
+
+        }
 }
